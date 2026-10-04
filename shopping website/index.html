@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f3ee">
+    <title>sidequest — good finds, no fuss</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="announcement"><span>THE GOOD STUFF, DELIVERED</span><span>Free shipping on orders over ₹999 <b>↗</b></span></div>
+    <header class="site-header">
+        <div class="header-main">
+            <a class="wordmark" href="#top" aria-label="Sidequest home">sidequest<span>®</span></a>
+            <form class="search" role="search" id="search-form"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Find your next favourite thing" aria-label="Search products"><kbd>↵</kbd></form>
+            <div class="header-actions"><button class="icon-button account-button" type="button" aria-label="Your account"><span>☺</span><span class="action-label">Account</span></button><button class="bag-button" id="bag-button" type="button" aria-label="Open shopping bag"><span>Bag</span><span class="bag-count" id="bag-count">0</span></button></div>
+        </div>
+        <nav class="category-nav" aria-label="Shop categories"><div class="nav-links"><button class="nav-link active" data-category="all">Everything</button><button class="nav-link" data-category="style">Style</button><button class="nav-link" data-category="tech">Tech</button><button class="nav-link" data-category="home">Home stuff</button><button class="nav-link" data-category="play">Off-duty</button></div><span class="nav-note">Good taste. Better prices.</span></nav>
+    </header>
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> YOUR NEW FAVOURITE TAB</p><h1 id="hero-title">Good finds.<br><span>Zero weird vibes.</span></h1><p class="hero-description">Little upgrades for your everyday. Big main-character energy for everything else.</p><a class="hero-cta" href="#discover">Get into it <span aria-hidden="true">↘</span></a><div class="hero-footnote"><span>01 / 04</span><span>CURATED FOR YOUR CURRENT ERA</span></div></div>
+            <div class="hero-image" role="img" aria-label="A curated selection of colorful sneakers and everyday essentials"><div class="image-tag"><span>THE WEEKEND EDIT</span><span>VOL. 04 ↗</span></div><div class="hero-sticker">GOOD<br>MOOD<br>GOODS</div></div><div class="hero-side-note">NEW SEASON, SAME YOU <span>✳</span></div>
+        </section>
+        <section class="category-strip" aria-label="Popular departments"><a href="#discover" data-shortcut="style"><span class="category-number">01</span><span class="category-name">Fits & bits</span><span class="category-arrow">↗</span></a><a href="#discover" data-shortcut="tech"><span class="category-number">02</span><span class="category-name">Tech things</span><span class="category-arrow">↗</span></a><a href="#discover" data-shortcut="home"><span class="category-number">03</span><span class="category-name">Room refresh</span><span class="category-arrow">↗</span></a><a href="#discover" data-shortcut="play"><span class="category-number">04</span><span class="category-name">Just for fun</span><span class="category-arrow">↗</span></a></section>
+        <section class="discovery" id="discover"><div class="section-heading"><div><p class="eyebrow">THE CURRENT OBSESSION</p><h2>In your orbit<span>✳</span></h2></div><p class="section-aside">The stuff you didn't know you needed.<br>Until, well, now.</p></div><div class="product-toolbar"><p id="result-count">Showing all the good stuff</p><label class="sort-control">Sort by <select id="sort-select" aria-label="Sort products"><option value="featured">For you</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label></div><div class="product-grid" id="product-grid" aria-live="polite"></div><p class="empty-state" id="empty-state" hidden>No finds for that search. Try a different vibe.</p></section>
+        <section class="newsletter"><div><p class="eyebrow">A VERY GOOD EMAIL, OCCASIONALLY</p><h2>Be first. Stay curious.</h2></div><form class="newsletter-form" id="newsletter-form"><label class="visually-hidden" for="email-input">Your email address</label><input id="email-input" type="email" placeholder="Your email address" required><button type="submit">Count me in <span>↗</span></button></form></section>
+    </main>
+    <footer class="site-footer"><a class="wordmark" href="#top">sidequest<span>®</span></a><p>Find your thing. Make it yours.</p><span>© SIDEQUEST 2026</span></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">YOUR GOOD STUFF</p><h2>Your bag <span id="drawer-count">(0)</span></h2></div><button class="close-drawer" id="close-drawer" type="button" aria-label="Close shopping bag">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-empty" id="cart-empty"><span>◌</span><p>Your bag is having a quiet day.</p><button id="keep-browsing" type="button">Keep browsing ↗</button></div><div class="cart-footer" id="cart-footer" hidden><div><span>Subtotal</span><strong id="cart-subtotal">₹0</strong></div><button class="checkout-button" type="button" id="checkout-button">Checkout <span>↗</span></button><p>Shipping calculated at checkout</p></div></aside>
+    <button class="drawer-scrim" id="drawer-scrim" aria-label="Close shopping bag" aria-hidden="true" tabindex="-1"></button>
+    <dialog class="store-dialog product-dialog" id="product-dialog" aria-labelledby="detail-name"><button class="dialog-close" type="button" data-close-dialog aria-label="Close product details">×</button><div id="product-detail-content"></div></dialog>
+    <dialog class="store-dialog checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title"><button class="dialog-close" type="button" data-close-dialog aria-label="Close checkout">×</button><div id="checkout-content"></div></dialog>
+    <dialog class="store-dialog confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title"><div id="confirmation-content"></div><button class="checkout-button" id="continue-shopping" type="button">Back to shopping <span>↗</span></button></dialog>
+    <script>
+        const products = [
+            { id: 1, name: 'Cloud nine headphones', category: 'tech', price: 2499, oldPrice: 3299, badge: 'LOW-KEY ICONIC', color: 'lavender', image: 'photo-1505740420928-5e560c06d30e', description: 'Your soundtrack, your rules. Comfy over-ear headphones with rich sound for commutes, study sessions and everything in between.', details: ['Over-ear cushioned fit', 'Wireless Bluetooth connection', 'Up to 30 hours playback'] },
+            { id: 2, name: 'Everywhere tote', category: 'style', price: 899, oldPrice: 1199, badge: 'GOES WITH EVERYTHING', color: 'peach', image: 'photo-1548036328-c9fa89d128fa', description: 'The throw-it-all-in tote that somehow goes with every plan. Roomy, easy to carry and ready for daily rotation.', details: ['Roomy everyday main compartment', 'Comfortable shoulder straps', 'Easy-care fabric'] },
+            { id: 3, name: 'Sunday ceramic mug set', category: 'home', price: 749, oldPrice: 999, badge: 'LITTLE JOY ALERT', color: 'blue', image: 'photo-1514228742587-6b1558fcca3d', description: 'Make the slow mornings count. A pair of feel-good ceramic mugs for coffee, chai or that one fancy tea you bought.', details: ['Set of 2 ceramic mugs', 'Easy-grip shape', 'Hand wash recommended'] },
+            { id: 4, name: 'Retro runner sneakers', category: 'style', price: 3199, oldPrice: 4299, badge: 'THE IT SHOE', color: 'yellow', image: 'photo-1542291026-7eec264c27ff', description: 'A throwback runner with all-day comfort and just the right amount of main-character energy. Choose your UK shoe size before adding.', details: ['Breathable mixed-material upper', 'Cushioned everyday sole', 'Regular fit; choose your usual UK size'], sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'] },
+            { id: 5, name: 'Mini speaker, major sound', category: 'tech', price: 1799, oldPrice: 2299, badge: 'GOOD VIBRATIONS', color: 'pink', image: 'photo-1608043152269-423dbba4e7e1', description: 'Small enough to bring along, loud enough to set the mood. Your next kitchen-dance-party essential.', details: ['Portable Bluetooth speaker', 'Rechargeable battery', 'Compact travel-friendly design'] },
+            { id: 6, name: 'The soft life throw', category: 'home', price: 1499, oldPrice: 1999, badge: 'NAP APPROVED', color: 'green', image: 'photo-1600210492486-724fe5c67fb0', description: 'For sofa Sundays, desk naps and pretending you are only sitting down for five minutes.', details: ['Soft woven texture', 'Generous couch-friendly size', 'Gentle machine wash'] },
+            { id: 7, name: 'Film-ish point & shoot', category: 'play', price: 2299, oldPrice: 2899, badge: 'MEMORY MAKER', color: 'purple', image: 'photo-1516035069371-29a1b244cc32', description: 'Take the photo. Keep the moment. A pocket-sized point-and-shoot made for days worth remembering.', details: ['Compact point-and-shoot body', 'Simple, beginner-friendly controls', 'Wrist strap included'] },
+            { id: 8, name: 'Weekend shades', category: 'style', price: 999, oldPrice: 1399, badge: 'SUNS OUT', color: 'orange', image: 'photo-1511499767150-a48a237f0083', description: 'Plans are better when the sun is out. These lightweight frames are made for the long way home.', details: ['Lightweight everyday frame', 'UV-protective lenses', 'Protective pouch included'] }
+        ];
+        const grid = document.querySelector('#product-grid');
+        const searchInput = document.querySelector('#search-input');
+        const resultCount = document.querySelector('#result-count');
+        const sortSelect = document.querySelector('#sort-select');
+        const emptyState = document.querySelector('#empty-state');
+        const cart = new Map();
+        const savedProductIds = new Set();
+        let activeCategory = 'all';
+        let selectedProductVariant = 'Standard';
+        const rupees = value => `₹${value.toLocaleString('en-IN')}`;
+
+        function renderProducts() {
+            const query = searchInput.value.trim().toLowerCase();
+            const visibleProducts = products.filter(product => activeCategory === 'all' || product.category === activeCategory)
+                .filter(product => `${product.name} ${product.category} ${product.badge}`.toLowerCase().includes(query))
+                .sort((first, second) => sortSelect.value === 'price-low' ? first.price - second.price : sortSelect.value === 'price-high' ? second.price - first.price : first.id - second.id);
+            resultCount.textContent = query || activeCategory !== 'all' ? `${visibleProducts.length} ${visibleProducts.length === 1 ? 'good find' : 'good finds'}` : 'Showing all the good stuff';
+            emptyState.hidden = visibleProducts.length > 0;
+            grid.innerHTML = visibleProducts.map(product => {
+                const isSaved = savedProductIds.has(product.id);
+                return `<article class="product-card" data-product-card="${product.id}"><div class="product-image ${product.color}"><button class="image-open" type="button" data-product-open="${product.id}" aria-label="View details for ${product.name}"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=720&q=85" alt="" loading="lazy"></button><span class="product-badge">${product.badge}</span><button class="save-button" type="button" data-save="${product.id}" aria-label="${isSaved ? 'Remove from saved' : 'Save'} ${product.name}" aria-pressed="${isSaved}">${isSaved ? '♥' : '♡'}</button></div><div class="product-info"><div class="product-title-row"><button class="title-open" type="button" data-product-open="${product.id}">${product.name}</button><span class="rating">★ 4.8</span></div><div class="product-buy-row"><p class="price">${rupees(product.price)} <del>${rupees(product.oldPrice)}</del></p><button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${product.name} to bag">+</button></div></div></article>`;
+            }).join('');
+        }
+
+        function renderCart() {
+            const items = [...cart.values()];
+            const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+            const subtotal = items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+            document.querySelector('#bag-count').textContent = itemCount;
+            document.querySelector('#drawer-count').textContent = `(${itemCount})`;
+            document.querySelector('#cart-subtotal').textContent = rupees(subtotal);
+            document.querySelector('#cart-empty').hidden = itemCount > 0;
+            document.querySelector('#cart-footer').hidden = itemCount === 0;
+            document.querySelector('#cart-items').innerHTML = items.map(({ key, product, variant, quantity }) => `<article class="cart-item"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=180&q=80" alt=""><div><h3>${product.name}</h3><p>${variant === 'Standard' ? '' : `${variant} · `}${rupees(product.price)}</p><div class="quantity-control"><button type="button" data-quantity="${key}" data-change="-1" aria-label="Remove one ${product.name}">−</button><span>${quantity}</span><button type="button" data-quantity="${key}" data-change="1" aria-label="Add one ${product.name}">+</button></div></div><button class="remove-item" type="button" data-remove="${key}" aria-label="Remove ${product.name}">×</button></article>`).join('');
+        }
+
+        function addToCart(product, variant, quantity = 1) {
+            const key = `${product.id}:${variant}`;
+            const existing = cart.get(key);
+            cart.set(key, { key, product, variant, quantity: (existing?.quantity || 0) + quantity });
+            renderCart();
+        }
+
+        function openProduct(productId) {
+            const product = products.find(item => item.id === Number(productId));
+            selectedProductVariant = product.sizes?.[0] || product.options?.[0] || 'Standard';
+            const variants = product.sizes || product.options || ['Standard'];
+            const choices = variants.map((variant, index) => `<label class="variant-choice"><input type="radio" name="product-variant" value="${variant}" ${index === 0 ? 'checked' : ''}><span>${variant}</span></label>`).join('');
+            document.querySelector('#product-detail-content').innerHTML = `<div class="detail-layout"><div class="detail-image ${product.color}"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=1000&q=90" alt="${product.name}"></div><div class="detail-copy"><p class="eyebrow">${product.badge}</p><h2 id="detail-name">${product.name}</h2><div class="detail-rating">★ 4.8 <span>· 126 reviews</span></div><p class="detail-price">${rupees(product.price)} <del>${rupees(product.oldPrice)}</del><span class="deal-note">Save ${Math.round((1 - product.price / product.oldPrice) * 100)}%</span></p><p class="detail-description">${product.description}</p><div class="variant-picker"><p>${product.sizes ? 'Choose your size' : 'Choose an option'}</p><div class="variant-options">${choices}</div><span class="variant-error" id="variant-error" hidden>Please choose an option.</span></div><label class="detail-quantity">Quantity <select id="detail-quantity" aria-label="Quantity">${Array.from({ length: 5 }, (_, index) => `<option value="${index + 1}">${index + 1}</option>`).join('')}</select></label><div class="detail-actions"><button class="detail-add" id="detail-add" type="button">Add to bag</button><button class="detail-order" id="detail-order" type="button">Order now <span>↗</span></button></div><ul class="detail-points">${product.details.map(detail => `<li>${detail}</li>`).join('')}</ul><p class="delivery-note">Free delivery over ₹999 · Easy 7-day returns</p></div></div>`;
+            document.querySelector('#product-dialog').showModal();
+            document.querySelector('#product-detail-content').querySelectorAll('[name="product-variant"]').forEach(input => input.addEventListener('change', () => { selectedProductVariant = input.value; }));
+            document.querySelector('#detail-add').addEventListener('click', () => {
+                const quantity = Number(document.querySelector('#detail-quantity').value);
+                addToCart(product, selectedProductVariant, quantity);
+                document.querySelector('#product-dialog').close();
+                showToast(`${product.name} added to your bag`);
+            });
+            document.querySelector('#detail-order').addEventListener('click', () => {
+                addToCart(product, selectedProductVariant, Number(document.querySelector('#detail-quantity').value));
+                document.querySelector('#product-dialog').close();
+                openCheckout();
+            });
+        }
+
+        function openCheckout() {
+            if (!cart.size) return;
+            const total = [...cart.values()].reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+            document.querySelector('#checkout-content').innerHTML = `<p class="eyebrow">ALMOST YOURS</p><h2 id="checkout-title">Delivery details</h2><p class="checkout-intro">A few details and your order is placed.</p><form id="place-order-form" class="checkout-form"><div class="checkout-fields"><label>Full name<input name="name" autocomplete="name" required maxlength="80" placeholder="Name on the door"></label><label>Mobile number<input name="phone" type="tel" autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></label><label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>PIN code<input name="pin" inputmode="numeric" pattern="[0-9]{6}" autocomplete="postal-code" required placeholder="6-digit PIN code"></label><label class="address-field">Full delivery address<textarea name="address" autocomplete="street-address" rows="3" required maxlength="240" placeholder="House / flat, street, area"></textarea></label><label>City<input name="city" autocomplete="address-level2" required></label><label>State<input name="state" autocomplete="address-level1" required></label></div><fieldset class="payment-options"><legend>Payment method</legend><label><input type="radio" name="payment" value="Cash on Delivery" checked><span>Cash on Delivery</span></label><label><input type="radio" name="payment" value="UPI on delivery"><span>UPI on delivery</span></label></fieldset><div class="checkout-summary"><span>Payable amount</span><strong>${rupees(total)}</strong></div><button class="checkout-button place-order-button" type="submit">Place demo order <span>↗</span></button><p class="demo-payment-note">Demo checkout only. No payment will be collected and no real shipment is created.</p></form>`;
+            document.querySelector('#checkout-dialog').showModal();
+            document.querySelector('#place-order-form').addEventListener('submit', event => {
+                event.preventDefault();
+                if (!event.currentTarget.reportValidity()) return;
+                const formData = new FormData(event.currentTarget);
+                const orderItems = [...cart.values()].map(item => ({ name: item.product.name, variant: item.variant, quantity: item.quantity, price: item.product.price }));
+                const order = { id: `SQ${Date.now().toString().slice(-8)}`, placedAt: new Date().toISOString(), name: formData.get('name'), phone: formData.get('phone'), email: formData.get('email'), address: `${formData.get('address')}, ${formData.get('city')}, ${formData.get('state')} ${formData.get('pin')}`, payment: formData.get('payment'), items: orderItems, total };
+                const previousOrders = JSON.parse(localStorage.getItem('sidequest-orders') || '[]');
+                previousOrders.push(order);
+                localStorage.setItem('sidequest-orders', JSON.stringify(previousOrders));
+                cart.clear();
+                renderCart();
+                document.querySelector('#checkout-dialog').close();
+                renderConfirmation(order);
+                document.querySelector('#confirmation-dialog').showModal();
+            });
+        }
+
+        function renderConfirmation(order) {
+            document.querySelector('#confirmation-content').innerHTML = `<div class="confirmation-mark">✓</div><p class="eyebrow">ORDER PLACED</p><h2 id="confirmation-title">It's in the bag. And on its way.</h2><p class="confirmation-number">Order <strong>#${order.id}</strong></p><p class="confirmation-copy">Thanks, ${order.name}. This is a demo order confirmation; it was saved in this browser only. No payment or real delivery is arranged.</p><div class="confirmation-summary">${order.items.map(item => `<div><span>${item.name}${item.variant === 'Standard' ? '' : ` · ${item.variant}`} × ${item.quantity}</span><strong>${rupees(item.price * item.quantity)}</strong></div>`).join('')}<div class="confirmation-total"><span>Total · ${order.payment}</span><strong>${rupees(order.total)}</strong></div></div><p class="confirmation-address">Delivering to<br>${order.address}<br>${order.phone}</p>`;
+        }
+
+        function setDrawerOpen(isOpen) {
+            document.body.classList.toggle('drawer-open', isOpen);
+            document.querySelector('#cart-drawer').setAttribute('aria-hidden', String(!isOpen));
+            if (isOpen) document.querySelector('#close-drawer').focus();
+            else document.querySelector('#bag-button').focus();
+        }
+        function showToast(message) {
+            const toast = document.querySelector('#toast');
+            toast.textContent = message;
+            toast.classList.add('visible');
+            clearTimeout(showToast.timeout);
+            showToast.timeout = setTimeout(() => toast.classList.remove('visible'), 2300);
+        }
+        document.querySelector('#search-form').addEventListener('submit', event => event.preventDefault());
+        searchInput.addEventListener('input', renderProducts);
+        sortSelect.addEventListener('change', renderProducts);
+        document.querySelectorAll('.nav-link').forEach(button => button.addEventListener('click', () => {
+            activeCategory = button.dataset.category;
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.toggle('active', link === button));
+            renderProducts();
+        }));
+        document.querySelectorAll('[data-shortcut]').forEach(link => link.addEventListener('click', () => {
+            activeCategory = link.dataset.shortcut;
+            document.querySelectorAll('.nav-link').forEach(button => button.classList.toggle('active', button.dataset.category === activeCategory));
+            renderProducts();
+        }));
+        grid.addEventListener('click', event => {
+            const addButton = event.target.closest('[data-add]');
+            const saveButton = event.target.closest('.save-button');
+            const productButton = event.target.closest('[data-product-open]');
+            if (addButton) {
+                const product = products.find(item => item.id === Number(addButton.dataset.add));
+                addToCart(product, product.sizes?.[0] || product.options?.[0] || 'Standard');
+                showToast(`${product.name} is in your bag`);
+            }
+            if (productButton) openProduct(productButton.dataset.productOpen);
+            if (saveButton) {
+                const productId = Number(saveButton.dataset.save);
+                if (savedProductIds.has(productId)) savedProductIds.delete(productId);
+                else savedProductIds.add(productId);
+                renderProducts();
+            }
+        });
+        document.querySelector('#cart-items').addEventListener('click', event => {
+            const quantityButton = event.target.closest('[data-quantity]');
+            const removeButton = event.target.closest('[data-remove]');
+            if (quantityButton) {
+                const item = cart.get(quantityButton.dataset.quantity);
+                item.quantity += Number(quantityButton.dataset.change);
+                if (item.quantity <= 0) cart.delete(item.key);
+                renderCart();
+            }
+            if (removeButton) { cart.delete(removeButton.dataset.remove); renderCart(); }
+        });
+        document.querySelector('#bag-button').addEventListener('click', () => setDrawerOpen(true));
+        document.querySelector('.account-button').addEventListener('click', () => showToast('Sign-in is not connected in this demo yet.'));
+        document.querySelector('#close-drawer').addEventListener('click', () => setDrawerOpen(false));
+        document.querySelector('#drawer-scrim').addEventListener('click', () => setDrawerOpen(false));
+        document.querySelector('#keep-browsing').addEventListener('click', () => setDrawerOpen(false));
+        document.addEventListener('keydown', event => { if (event.key === 'Escape' && document.body.classList.contains('drawer-open')) setDrawerOpen(false); });
+        document.querySelector('#checkout-button').addEventListener('click', () => { document.querySelector('#cart-drawer').setAttribute('aria-hidden', 'true'); document.body.classList.remove('drawer-open'); openCheckout(); });
+        document.querySelector('#newsletter-form').addEventListener('submit', event => { event.preventDefault(); showToast('Newsletter signup is not connected in this demo yet.'); });
+        document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
+        document.querySelectorAll('.store-dialog').forEach(dialog => dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); }));
+        document.querySelector('#continue-shopping').addEventListener('click', () => document.querySelector('#confirmation-dialog').close());
+        renderProducts();
+        renderCart();
+    </script>
+</body>
+</html>
